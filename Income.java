@@ -1,14 +1,23 @@
 public class Income {
-    public int date;
+    public String date;
     public double num;
     public String type;
+    public String note;
 
     public Income(){
 
-
     }
-
-public void setData(int date){
+    public Income(String date, double num, String type,String note){
+        if(num<0){
+            System.out.println("输入的金额需大于零！");
+            return ;
+        }
+        setDate(date);
+        setNum(num);
+        setType(type);
+        setNote(note);
+    }
+public void setDate(String date){
         this.date=date;
 }
 public void setNum(double num){
@@ -17,7 +26,12 @@ public void setNum(double num){
 public void setType(String type){
         this.type=type;
 }
-public int getDate(){
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getDate(){
         return date;
 }
 public double getNum(){
@@ -26,16 +40,21 @@ public double getNum(){
 public String  getType(){
         return type;
 }
-public void record(int date,double num,String type){
-    if(num<0){
-        System.out.println("输入的金额需大于零！");
-        return ;
+
+    public String getNote() {
+        return note;
     }
-    date+=date;
-    num+=num;
-    type+=type;
-}
+
+
 public void print(){
-    System.out.println("日期:"+getDate()+" 收入："+getNum()+" 类型"+getType());
+    System.out.println("日期:"+getDate()+" 收入："+getNum()+" 类型:"+getType()+" 备注："+getNote());
 }
+}
+
+
+class IncomeDemo{
+    public static void main(String[] args){
+        Income income=new Income("2024.09.30",100,"利息","");
+        income.print();
+    }
 }

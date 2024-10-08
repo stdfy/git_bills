@@ -1,13 +1,28 @@
 public class Out {
 
-    public int date;
+    public String date;
     public double num;
     public String type;
+    public String note;
     public Out(){
 
     }
+    public Out(String date, double num, String type,String note){
+        if(num<0){
+            System.out.println("输入的金额需大于零！");
+            return ;
+        }
+        setDate(date);
+        setNum(num);
+        setType(type);
+        setNote(note);
+    }
 
-    public int getDate() {
+    public String getNote() {
+        return note;
+    }
+
+    public String getDate() {
         return date;
     }
 
@@ -19,7 +34,7 @@ public class Out {
         return type;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -30,16 +45,13 @@ public class Out {
     public void setType(String type) {
         this.type = type;
     }
-    public void record(int date,double num,String type){
-        if(num<0){
-            System.out.println("输入的金额需大于零！");
-            return ;
-        }
-        date+=date;
-        num+=num;
-        type+=type;
+
+    public void setNote(String note) {
+        this.note = note;
     }
+
+
     public void print(){
-        System.out.println("日期:"+getDate()+" 支出："+getNum()+" 类型"+getType());
+        System.out.println("日期:"+getDate()+" 支出："+getNum()+" 类型"+getType()+" 备注："+getNote());
     }
 }
