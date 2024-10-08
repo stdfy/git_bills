@@ -46,10 +46,16 @@ public String  getType(){
     }
 
 
-public void print(){
-    System.out.println("日期:"+getDate()+" 收入："+getNum()+" 类型:"+getType()+" 备注："+getNote());
+    @Override
+    public String toString() {
+        return "日期: " + date + ", 收入: " + num + ", 类别: " + type + ", 备注: " + note;
+    }
+
+    public void print(){
+        System.out.println("日期:"+getDate()+" 收入："+getNum()+" 类型"+getType()+" 备注："+getNote());
+    }
 }
-}
+
 
 
 class IncomeDemo{

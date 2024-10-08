@@ -11,7 +11,7 @@ public class Main {
         incomes.add(income);
     }
 
-    public static void addExpense(String date, double num, String type, String note) {
+    public static void addOut(String date, double num, String type, String note) {
         Out out = new Out(date, num, type,note);
         outs.add(out);
     }
@@ -44,25 +44,25 @@ public class Main {
                     System.out.print("输入日期 (YYYY-MM-DD): ");
                     String incomeDate = scanner.nextLine();
                     System.out.print("输入收入金额: ");
-                    double incomeAmount = Double.parseDouble(scanner.nextLine());
+                    double incomeNum = Double.parseDouble(scanner.nextLine());
                     System.out.print("输入收入类别 (如工资、奖金等): ");
-                    String incomeCategory = scanner.nextLine();
+                    String incomeType = scanner.nextLine();
                     System.out.print("输入备注: ");
-                    String incomeRemark = scanner.nextLine();
-                    addIncome(incomeDate, incomeAmount, incomeCategory, incomeRemark);
+                    String incomeNote = scanner.nextLine();
+                    addIncome(incomeDate, incomeNum, incomeType, incomeNote);
                     System.out.println("收入记录添加成功！");
                     break;
 
                 case "2":
                     System.out.print("输入日期 (YYYY-MM-DD): ");
-                    String expenseDate = scanner.nextLine();
+                    String outDate = scanner.nextLine();
                     System.out.print("输入支出金额: ");
-                    double expenseAmount = Double.parseDouble(scanner.nextLine());
+                    double outNum = Double.parseDouble(scanner.nextLine());
                     System.out.print("输入支出类别 (如餐饮、交通、购物等): ");
-                    String expenseCategory = scanner.nextLine();
+                    String outType = scanner.nextLine();
                     System.out.print("输入备注: ");
-                    String expenseRemark = scanner.nextLine();
-                    addExpense(expenseDate, expenseAmount, expenseCategory, expenseRemark);
+                    String outNote = scanner.nextLine();
+                    addOut(outDate,outNum,outType,outNote);
                     System.out.println("支出记录添加成功！");
                     break;
 

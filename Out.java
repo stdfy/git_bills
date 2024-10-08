@@ -54,4 +54,16 @@ public class Out {
     public void print(){
         System.out.println("日期:"+getDate()+" 支出："+getNum()+" 类型"+getType()+" 备注："+getNote());
     }
+    @Override
+    public String toString() {
+        return "日期: " + date + ", 支出: " + num + ", 类别: " + type + ", 备注: " + note;
+    }
+}
+
+
+class OutDemo{
+    public static void main(String[] args){
+        Out out=new Out("2024.09.30",100,"利息","");
+        out.print();
+    }
 }
