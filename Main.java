@@ -16,7 +16,7 @@ public class Main {
         outs.add(out);
     }
 
-    public static void viewAllRecords() {
+    public static void viewRecords() {
         System.out.println("\n--- 收入记录 ---");
         for (Income income : incomes) {
             System.out.println(income);
@@ -24,36 +24,6 @@ public class Main {
         System.out.println("\n--- 支出记录 ---");
         for (Out out : outs) {
             System.out.println(out);
-        }
-    }
-    public  static void viewRecords(){
-        Scanner in=new Scanner(System.in);
-        while (true) {
-            System.out.println("请输入所要查询账单的日期：");
-            String date = in.nextLine();
-            boolean found = false;
-
-            for (Income income : incomes) {
-                if (date.equals(income.date)) {
-                    System.out.println(income);
-                    found = true;
-                    break;
-                }
-            }
-            for (Out out : outs) {
-                if (date.equals(out.date)) {
-                    System.out.println(out);
-                    found = true;
-                    break;
-                }
-            }
-
-            if (found) {
-
-                break;
-            } else {
-                System.out.println("查询不到此日期！");
-            }
         }
     }
 
@@ -65,8 +35,7 @@ public class Main {
             System.out.println("1. 记录收入");
             System.out.println("2. 记录支出");
             System.out.println("3. 查看所有记录");
-            System.out.println("4. 查看账单");
-            System.out.println("5. 退出");
+            System.out.println("4. 退出");
 
             String choice = scanner.nextLine();
 
@@ -98,14 +67,10 @@ public class Main {
                     break;
 
                 case "3":
-                    viewAllRecords();
-                    break;
-
-                case "4":
                     viewRecords();
                     break;
 
-                case "5":
+                case "4":
                     System.out.println("退出系统");
                     return;
 
