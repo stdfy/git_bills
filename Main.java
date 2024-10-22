@@ -72,6 +72,7 @@ public class Main {
 
             switch (choice) {
                 case "1":
+
                     System.out.print("输入日期 (YYYY-MM-DD): ");
                     String incomeDate = scanner.nextLine();
                     System.out.print("输入收入金额: ");
