@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -57,6 +59,31 @@ public class Main {
         }
     }
 
+    public static void monthlyStatistics(String month){
+        double totalIncome=0;
+        double totalOut=0;
+        Map<String, Double> typeAmountMap = new HashMap<>();
+        for(Income i:incomes){
+            if (month.equals(i.date.substring(0,7))){
+                totalIncome+=i.num;
+
+            }
+        }
+        System.out.println("总收入："+totalIncome);
+        for(Out i:outs){
+            if (month.equals(i.date.substring(0,7))){
+                totalOut+=i.num;
+                typeAmountMap.put(i.type,
+                        typeAmountMap.getOrDefault(i.type, 0.0) + i.num);
+            }
+        }
+        System.out.println("总支出："+totalOut);
+        for (Map.Entry<String, Double> entry : typeAmountMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -66,7 +93,9 @@ public class Main {
             System.out.println("2. 记录支出");
             System.out.println("3. 查看所有记录");
             System.out.println("4. 查看账单");
-            System.out.println("5. 退出");
+            System.out.println("5. 预算管理");
+            System.out.println("6. 月度统计");
+            System.out.println("7. 退出系统");
 
             String choice = scanner.nextLine();
 
@@ -107,6 +136,31 @@ public class Main {
                     break;
 
                 case "5":
+                    BudgetManagement budgetManagement=new BudgetManagement();
+                    System.out.println("可用预算：");
+                    String[] month={"01","02","03","04","05","06","07","08","09","10","11","12"};
+                    for(int i=0;i<budgetManagement.budget.length;i++){
+                        for (Out out:outs){
+                            if (out.date.substring(5,7).equals(month[i])){
+                                budgetManagement.budget[i]-=out.num;
+                            }
+                        }
+                    }int i=1;
+                    for(double d: budgetManagement.budget){
+
+                        System.out.println(i+"月："+d);
+                        i++;
+                    }
+
+                    break;
+
+                case "6":
+                    System.out.print("输入月份 (YYYY-MM): ");
+                    String mon = scanner.nextLine();
+                    monthlyStatistics(mon);
+                    break;
+
+                case "7":
                     System.out.println("退出系统");
                     return;
 
